@@ -1,0 +1,52 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.5'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.hoang'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	implementation group: 'io.netty', name: 'netty-all', version: '4.1.68.Final'
+
+	//GSON
+	implementation 'com.google.code.gson:gson:2.8.7'
+
+	//JSON
+	implementation 'org.json:json:20171018'
+
+	implementation group: 'io.grpc', name: 'grpc-netty', version: '1.5.0'
+
+	/**
+	 * Websocket
+	 */
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+
+	//Log
+	implementation "net.logstash.logback:logstash-logback-encoder:6.6"
+	implementation "ch.qos.logback:logback-classic:1.2.3"
+	
+	// Socket Client
+	implementation 'com.neovisionaries:nv-websocket-client:2.14'
+}
+
+test {
+	useJUnitPlatform()
+}
